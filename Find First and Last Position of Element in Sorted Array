@@ -1,0 +1,39 @@
+class Solution {
+    public static int l(int arr[],int t) {
+		int l=0;
+		int r=arr.length-1;
+			while(l<=r) {
+				int m=(l+r)/2;
+				if(arr[m]<t) {
+					l=m+1;
+				}else {
+					r=m-1;
+				}
+			}
+			if(l<arr.length && arr[l]==t)
+				return l;
+		return -1;
+	}
+	public static int r(int arr[],int t) {
+		int l=0;
+		int r=arr.length-1;
+			while(l<=r) {
+				int m=(l+r)/2;
+				if(arr[m]>t) {
+					r=m-1;
+				}else {
+					l=m+1;
+				}
+			}
+			if(r>=0 && arr[r]==t) {
+				return r;
+			}
+		return -1;
+	}
+    public int[] searchRange(int[] arr, int t) {
+        int lm=l(arr,t);
+        int rm=r(arr,t);
+        int ans[]={lm,rm};
+        return ans;
+    }
+}
