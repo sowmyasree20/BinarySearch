@@ -1,0 +1,28 @@
+class Solution {
+    public boolean fun(int n,int[] q,int l){
+        for(int i=0;i<q.length;i++){
+            int temp=q[i]/l;
+            if(q[i]%l!=0){
+                temp++;
+            }
+            n-=temp;
+            if(n<0){
+                return false;
+            }
+        }
+        return true;
+    }
+    public int minimizedMaximum(int n, int[] q) {
+       int l=1;
+       int r=(int)Math.pow(10,5);
+       while(l<=r){
+        int m=l+(r-l)/2;
+        if(fun(n,q,m)){
+            r=m-1;
+        }else{
+            l=m+1;
+        }
+       }
+       return l;
+    }
+}
